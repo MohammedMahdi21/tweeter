@@ -1,4 +1,4 @@
-// This file will be responsible for the character counter feature for the tweet text area
+// This file will be responsible for the character counter feature in the tweet text area
 
 $(document).ready(function () {
   $("#tweet-text").on("input", function () {

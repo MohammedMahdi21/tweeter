@@ -1,0 +1,62 @@
+/* This Css to style the tweets displayed */
+
+#tweets-section {
+  border: solid;
+  margin-top: 1em;
+}
+
+
+.article-tweet {
+  margin: 5px;
+}
+
+#tweets-section:hover {
+  box-shadow: 8px 9px 3px 0px rgb(0 0 0 / 50%);
+}
+
+.article-tweet footer i:hover {
+  color: rgb(163, 147, 56);
+}
+
+.article-tweet > header > div:nth-child(2) {
+  padding: 1em;
+  border-bottom: solid 5px;
+  margin-bottom: 10px;
+}
+
+.article-tweet footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 25px; 
+}
+
+.header-top > div > i {
+  font-size: 40px;
+  padding-right: 10px;
+}
+
+.header-top > div:nth-child(1) {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.header-top > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.3);
+  }
+
+

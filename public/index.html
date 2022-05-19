@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -59,6 +60,8 @@
 
   <!-- Page-specific (main) content here -->
   <main class="container">
+
+    <!-- This section for tweet form / adding a new tweet -->
     <section id="new-tweet">
       <form method="POST" action="/tweets" id="tweet-box">
         <label for="tweet-text">What are you humming about?</label>
@@ -69,6 +72,38 @@
         </div>
       </form>
     </section>
+
+    <!-- This section for all tweets -->
+    <section id="tweets-section">
+      <article class="article-tweet">
+        <header>
+          <div class="header-top">
+            <div>
+              <i class="fa-regular fa-face-dizzy"></i>
+              <span>Newton</span>
+            </div>
+            <div>@Sirlsaac</div>
+          </div>
+          <div>
+            A Computer Science portal for geeks.
+            It contains well written, well thought
+            and well explained computer science and
+            programming articles.
+          </div>
+        </header>
+        <footer>
+          <div>
+            10 days ago
+          </div>
+          <div>
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+        </footer>
+      </article>
+    </section>
+
   </main>
 </body>
 
