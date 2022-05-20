@@ -37,7 +37,7 @@ $(document).ready(function () {
 
   const renderTweets = function (tweets) {
     for (let tweet of tweets) {
-      $('#tweets-section').prepend(createTweetElement(tweet))
+      $('#tweet-container').prepend(createTweetElement(tweet))
     }
   }
 
