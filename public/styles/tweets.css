@@ -1,16 +1,18 @@
 /* This Css to style the tweets displayed */
 
 #tweets-section {
-  border: solid;
   margin-top: 1em;
+  width: 100%;
 }
 
 
 .article-tweet {
   margin: 5px;
+  border: solid;
+  margin-bottom: 1em;
 }
 
-#tweets-section:hover {
+.article-tweet:hover {
   box-shadow: 8px 9px 3px 0px rgb(0 0 0 / 50%);
 }
 
