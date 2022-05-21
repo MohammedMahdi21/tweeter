@@ -6,8 +6,18 @@
 
 
 // Fake data taken from initial-tweets.json
-$(document).ready(function () {
+$(document).ready(function() {
 
+
+  $("#tweet-box").on("submit", function (event) {
+    event.preventDefault();
+    $.post("/", $(this).serialize())
+      .then(() => {
+        console.log("post done");
+      });
+
+
+  });
 
   const data = [
     {
@@ -33,15 +43,15 @@ $(document).ready(function () {
       },
       "created_at": 1461113959088
     }
-  ]
+  ];
 
-  const renderTweets = function (tweets) {
+  const renderTweets = function(tweets) {
     for (let tweet of tweets) {
-      $('#tweet-container').prepend(createTweetElement(tweet))
+      $('#tweet-container').prepend(createTweetElement(tweet));
     }
-  }
+  };
 
-  const createTweetElement = function (tweet) {
+  const createTweetElement = function(tweet) {
     let $tweet = $(` <article class="article-tweet">
         <header>
           <div class="header-top">
@@ -67,11 +77,11 @@ $(document).ready(function () {
             <i class="fa-solid fa-heart"></i>
           </div>
         </footer>
-      </article>`)
+      </article>`);
 
 
     return $tweet;
-  }
+  };
 
   renderTweets(data);
-})
+});
