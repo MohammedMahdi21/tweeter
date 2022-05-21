@@ -8,42 +8,33 @@
 // Fake data taken from initial-tweets.json
 $(document).ready(function() {
 
-
+  // Add an event listener for submit and prevent its default behaviour.
   $("#tweet-box").on("submit", function (event) {
     event.preventDefault();
-    $.post("/", $(this).serialize())
+    const tweetText = $("textarea").val();
+    const tweetLength = $("textarea").val().length;
+
+    if (tweetText === "" || tweetText === null){
+      return alert("Cannot post an empty tweet")
+    } else if (tweetLength > 140){
+      return alert("Maximum characters up to 140")
+    } else {
+    $.post("/tweets", $(this).serialize())
       .then(() => {
         console.log("post done");
       });
-
-
+    }
   });
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ];
+  // Define a function called loadTweets that is responsible for fetching tweets from the http://localhost:8080/tweets page.
+  const loadTweets = function() {
+    $.get("http://localhost:8080/tweets")
+    .then(function (morePost) {
+      console.log('Success: ', morePost);
+      renderTweets(morePost)
+    })
+  } 
+  
 
   const renderTweets = function(tweets) {
     for (let tweet of tweets) {
@@ -69,7 +60,7 @@ $(document).ready(function() {
       
         <footer>
           <div>
-            ${tweet.created_at}
+            ${timeago.format(tweet.created_at)}
           </div>
           <div>
             <i class="fa-solid fa-flag"></i>
@@ -82,6 +73,5 @@ $(document).ready(function() {
 
     return $tweet;
   };
-
-  renderTweets(data);
+loadTweets()
 });
