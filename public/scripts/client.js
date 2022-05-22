@@ -11,18 +11,24 @@ $(document).ready(function() {
   // Add an event listener for submit and prevent its default behaviour.
   $("#tweet-box").on("submit", function (event) {
     event.preventDefault();
-    const tweetText = $("textarea").val();
+    const tweetText = $("textarea");
     const tweetLength = $("textarea").val().length;
 
-    if (tweetText === "" || tweetText === null){
+    if (tweetText.val() === "" || tweetText.val() === null){
       return alert("Cannot post an empty tweet")
     } else if (tweetLength > 140){
       return alert("Maximum characters up to 140")
     } else {
     $.post("/tweets", $(this).serialize())
-      .then(() => {
-        console.log("post done");
+      .then((result) => {
+        loadTweets(result);
       });
+
+      tweetText.val("");
+
+      const counter = $(this).find(".counter");
+      counter.text("140");
+
     }
   });
 
@@ -30,12 +36,10 @@ $(document).ready(function() {
   const loadTweets = function() {
     $.get("http://localhost:8080/tweets")
     .then(function (morePost) {
-      console.log('Success: ', morePost);
       renderTweets(morePost)
     })
   } 
   
-
   const renderTweets = function(tweets) {
     for (let tweet of tweets) {
       $('#tweet-container').prepend(createTweetElement(tweet));
@@ -70,8 +74,9 @@ $(document).ready(function() {
         </footer>
       </article>`);
 
-
     return $tweet;
   };
+
 loadTweets()
+
 });
