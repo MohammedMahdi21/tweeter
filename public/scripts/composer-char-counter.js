@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
   $("#tweet-text").on("input", function () {
-
+    $('#formError').slideUp()
     const counter = $(this).closest("form").find(".counter")
     let inputLength = $("textarea").val().length;
     const remainingLength = 140 - inputLength;
@@ -15,6 +15,6 @@ $(document).ready(function () {
     } else {
       counter.css("color", "");
     }
-    
+
   })
 });

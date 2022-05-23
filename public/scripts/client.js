@@ -7,45 +7,40 @@
 
 // Fake data taken from initial-tweets.json
 $(document).ready(function() {
-
   // Add an event listener for submit and prevent its default behaviour.
-  $("#tweet-box").on("submit", function (event) {
+  $("#tweet-box").on("submit", function(event) {
     event.preventDefault();
     const tweetText = $("textarea");
-    const tweetLength = $("textarea").val().length;
-    if (tweetText.val() === "" || tweetText.val() === null){
-      return alert("Cannot post an empty tweet")
-    } else if (tweetLength > 140){
-      return alert("Maximum characters up to 140")
-    } else {
+
+    if (!validateTweet(tweetText.val())) {
+      return
+    }
     $.post("/tweets", $(this).serialize())
       .then((result) => {
         loadTweets(result);
       });
 
-      tweetText.val("");
+    tweetText.val("");
+    const counter = $(this).find(".counter");
+    counter.text("140");
 
-      const counter = $(this).find(".counter");
-      counter.text("140");
-
-    }
   });
 
   // Define a function called loadTweets that is responsible for fetching tweets from the http://localhost:8080/tweets page.
   const loadTweets = function() {
     $.get("http://localhost:8080/tweets")
-    .then(function (morePost) {
-      renderTweets(morePost)
-    })
-  } 
-  
+      .then(function (morePost) {
+        renderTweets(morePost)
+      })
+  }
+
   const renderTweets = function(tweets) {
     for (let tweet of tweets) {
       const userTweet = $(createTweetElement(tweet));
       userTweet.find(".article-body div").text(tweet.content.text);
       $('#tweet-container').prepend(userTweet);
     }
-    
+
   };
 
   const createTweetElement = function(tweet) {
@@ -78,8 +73,23 @@ $(document).ready(function() {
       </article>`);
 
     return $tweet;
+
   };
 
-loadTweets()
+  // Displaying Validation Errors With jQuery, If the user submits a tweet that fails validation, an error message slides into view.
+  const validateTweet = function(tweet) {
+    if (tweet === "" || tweet === null) {
+      $('#formError').text("Cannot post an empty tweet");
+      $('#formError').slideDown();
+      return false;
+    } else if (tweet.length > 140) {
+      $('#formError').text("Maximum characters up to 140");
+      $('#formError').slideDown();
+      return false;
+    } else {
+      return true;
+    }
+  }
+  loadTweets()
 
 });
