@@ -13,7 +13,6 @@ $(document).ready(function() {
     event.preventDefault();
     const tweetText = $("textarea");
     const tweetLength = $("textarea").val().length;
-
     if (tweetText.val() === "" || tweetText.val() === null){
       return alert("Cannot post an empty tweet")
     } else if (tweetLength > 140){
@@ -42,8 +41,11 @@ $(document).ready(function() {
   
   const renderTweets = function(tweets) {
     for (let tweet of tweets) {
-      $('#tweet-container').prepend(createTweetElement(tweet));
+      const userTweet = $(createTweetElement(tweet));
+      userTweet.find(".article-body div").text(tweet.content.text);
+      $('#tweet-container').prepend(userTweet);
     }
+    
   };
 
   const createTweetElement = function(tweet) {
@@ -56,8 +58,9 @@ $(document).ready(function() {
             </div>
             <div>${tweet.user.handle}</div>
           </div>
-          <div>
-            ${tweet.content.text}
+          
+          <div class="article-body">
+          <div></div>
           </div>
         </header>
 
