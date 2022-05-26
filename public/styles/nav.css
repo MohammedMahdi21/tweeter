@@ -20,3 +20,11 @@
   align-items: center;
   font-family: 'Source Sans Pro';
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .nav {
+    background-color: transparent;
+  }
+
+}
