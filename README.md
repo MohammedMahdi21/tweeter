@@ -14,7 +14,7 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screenshots
 
-![tweet-App-desktop-view](https://github.com/MohammedMahdi21/tweeter/blob/master/docs/tweet-App-desktop-view.png =100x500)
+![tweet-App-desktop-view](https://github.com/MohammedMahdi21/tweeter/blob/master/docs/tweet-App-desktop-view.png)
 
 ![tweet-App-tablet-view](https://github.com/MohammedMahdi21/tweeter/blob/master/docs/tweet-App-tablet-view.png)
 
