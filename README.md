@@ -12,6 +12,14 @@ This repository is the starter code for the project: Students will fork and clon
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.
 
+## Screenshots
+
+![tweet-App-desktop-view](https://github.com/MohammedMahdi21/tweeter/blob/master/docs/tweet-App-desktop-view.png)
+
+![tweet-App-tablet-view](https://github.com/MohammedMahdi21/tweeter/blob/master/docs/tweet-App-tablet-view.png)
+
+![tweet-App-phone-view](https://github.com/MohammedMahdi21/tweeter/blob/master/docs/tweet-App-phone-view.png)
+
 ## Dependencies
 
 - Express
