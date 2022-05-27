@@ -1,20 +1,20 @@
 /*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
+ * Client-side JS logic
+ * Fake data taken from initial-tweets.json
  */
 
-
-// Fake data taken from initial-tweets.json
 $(document).ready(function() {
+
   // Add an event listener for submit and prevent its default behaviour.
   $("#tweet-box").on("submit", function(event) {
+
     event.preventDefault();
     const tweetText = $("textarea");
 
     if (!validateTweet(tweetText.val())) {
-      return
+      return;
     }
+
     $.post("/tweets", $(this).serialize())
       .then((result) => {
         loadTweets(result);
@@ -26,15 +26,21 @@ $(document).ready(function() {
 
   });
 
-  // Define a function called loadTweets that is responsible for fetching tweets from the http://localhost:8080/tweets page.
+  // Define a function called loadTweets that is responsible for
+  //fetching tweets from the http://localhost:8080/tweets page.
   const loadTweets = function() {
-    $.get("http://localhost:8080/tweets")
-      .then(function (morePost) {
-        renderTweets(morePost)
-      })
-  }
 
+    $.get("http://localhost:8080/tweets")
+      .then(function(morePost) {
+        renderTweets(morePost);
+      });
+
+  };
+
+  // Define a function called renderTweets,responsible for taking in an array of tweet objects
+  // and then appending each one to the #tweets-container.
   const renderTweets = function(tweets) {
+
     for (let tweet of tweets) {
       const userTweet = $(createTweetElement(tweet));
       userTweet.find(".article-body div").text(tweet.content.text);
@@ -43,7 +49,10 @@ $(document).ready(function() {
 
   };
 
+  // define a function createTweetElement that takes in a tweet object and is responsible for returning
+  //a tweet <article> element containing the entire HTML structure of the tweet.
   const createTweetElement = function(tweet) {
+    
     let $tweet = $(` <article class="article-tweet">
         <header>
           <div class="header-top">
@@ -76,8 +85,11 @@ $(document).ready(function() {
 
   };
 
-  // Displaying Validation Errors With jQuery, If the user submits a tweet that fails validation, an error message slides into view.
+  // Displaying Validation Errors, If the user submits a tweet that fails validation,
+  // an error message slides into view.
+
   const validateTweet = function(tweet) {
+
     if (tweet === "" || tweet === null) {
       $('#formError').text("Cannot post an empty tweet");
       $('#formError').slideDown();
@@ -89,7 +101,9 @@ $(document).ready(function() {
     } else {
       return true;
     }
-  }
-  loadTweets()
+
+  };
+
+  loadTweets();
 
 });

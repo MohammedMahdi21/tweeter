@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <!-- Meta Information -->
   <title>Tweeter - Home Page</title>
 
@@ -38,11 +39,14 @@
 
   <!-- Disable viewport zooming -->
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+
 </head>
 
 <body>
+
   <!-- Top nav bar (fixed) -->
   <nav class="nav">
+
     <span>tweeter</span>
 
     <!-- solid style -->
@@ -50,15 +54,19 @@
       <span><b>Write</b> a new tweet</span>
       <a href="#top"><i class="fa-solid fa-angles-down fa-beat-fade" style="color: red"></i></a>
     </div>
+
   </nav>
 
+  <!-- Header: avatar and name -->
   <header class="header">
+
     <div>
       <img src="/images/profile-hex.png">
     </div>
     <div>
       <p><span id="name">Mohammed</span> Mahdi</p>
     </div>
+
   </header>
 
   <!-- Page-specific (main) content here -->
@@ -68,7 +76,6 @@
     <section id="new-tweet">
 
       <div class="form-warning" id="formError"></div>
-
       <form method="POST" action="/tweets" id="tweet-box">
         <label for="tweet-text">What are you humming about?</label>
         <textarea name="text" id="tweet-text"></textarea>
@@ -77,13 +84,16 @@
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>
+
     </section>
+
     <!-- This section for all tweets -->
     <section id="tweet-container">
 
     </section>
     
   </main>
+
 </body>
 
 </html>
