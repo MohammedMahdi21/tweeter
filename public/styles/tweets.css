@@ -20,7 +20,7 @@
   color: rgb(163, 147, 56);
 }
 
-.article-tweet > header > div:nth-child(2) {
+.article-tweet>header>div:nth-child(2) {
   padding: 1em;
   border-bottom: solid 5px;
   margin-bottom: 10px;
@@ -40,25 +40,23 @@
   justify-content: space-between;
   padding-left: 15px;
   padding-right: 15px;
-  margin-top: 25px; 
+  margin-top: 25px;
 }
 
-.header-top > div > i {
+.header-top>div>i {
   font-size: 40px;
   padding-right: 10px;
 }
 
-.header-top > div:nth-child(1) {
-display: flex;
-justify-content: center;
-align-items: center;
+.header-top>div:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.header-top > div:nth-child(2) {
+.header-top>div:nth-child(2) {
   display: flex;
   justify-content: center;
   align-items: center;
   color: rgba(0, 0, 0, 0.3);
-  }
-
-
+}
